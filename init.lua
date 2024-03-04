@@ -3,3 +3,7 @@ vim.api.nvim_exec([[
 ]], false)
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.api.nvim_create_autocmd("VimEnter", {
+    pattern = "*",
+    command = "Nvdash"
+})
