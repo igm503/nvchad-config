@@ -18,6 +18,9 @@ local opts = {
     "cpp",
     "zig",
   },
+  highlight = {
+    enable = true,
+  },
 }
 
 return opts
