@@ -38,5 +38,12 @@ local plugins = {
       require "custom.configs.copilot"
     end,
   },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    lazy = false,
+    config = function ()
+      require "custom.configs.rainbow-delimiters"
+    end,
+  },
 }
 return plugins
