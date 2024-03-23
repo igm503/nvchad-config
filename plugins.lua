@@ -45,5 +45,9 @@ local plugins = {
       require "custom.configs.rainbow-delimiters"
     end,
   },
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+  }
 }
 return plugins
