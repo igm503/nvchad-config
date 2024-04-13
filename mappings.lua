@@ -51,6 +51,30 @@ M.nvterm = {
       "Open vertical terminal",
       { noremap = true, silent = true }
     },
+    ["<leader>k"] = {
+      function()
+        require("nvterm.terminal").new "float"
+      end,
+      "Toggle floating term",
+    },
+    ["<leader>th"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle floating term",
+    },
+    ["<leader>tv"] = {
+      function()
+        require("nvterm.terminal").toggle "vertical"
+      end,
+      "Toggle floating term",
+    },
+    ["<leader>tk"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "Toggle floating term",
+    },
   }
 }
 
