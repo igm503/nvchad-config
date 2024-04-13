@@ -33,17 +33,25 @@ M.copilot = {
   },
 }
 
-M.nvimtree = {
+M.nvterm = {
   n = {
     ["<leader>h"] = {
       function()
-        vim.cmd("new")     -- This command opens a new horizontal split
-        local win_height = math.floor(vim.o.lines / 4)
-        vim.api.nvim_win_set_height(0, win_height)
-        vim.cmd("terminal")     -- Start terminal in the new split
-      end
+        require("nvterm.terminal").new "horizontal"
+        vim.api.nvim_win_set_height(0, math.floor(vim.o.lines * 0.3))
+      end,
+      "Open horizontal terminal",
+      { noremap = true, silent = true }
     },
-  },
+    ["<leader>v"] = {
+      function()
+        require("nvterm.terminal").new "vertical"
+        vim.api.nvim_win_set_width(0, math.floor(vim.o.columns * 0.3))
+      end,
+      "Open vertical terminal",
+      { noremap = true, silent = true }
+    },
+  }
 }
 
 return M

@@ -51,7 +51,6 @@ local plugins = {
   },
   {
     "folke/zen-mode.nvim",
-    opts = {},
     lazy = false,
   },
 }
