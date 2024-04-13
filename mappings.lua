@@ -28,8 +28,21 @@ M.copilot = {
         vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
       end,
       "Copilot Accept",
-      {replace_keycodes = true, nowait=true, silent=true, expr=true, noremap=true}
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true }
     }
+  },
+}
+
+M.nvimtree = {
+  n = {
+    ["<leader>h"] = {
+      function()
+        vim.cmd("new")     -- This command opens a new horizontal split
+        local win_height = math.floor(vim.o.lines / 4)
+        vim.api.nvim_win_set_height(0, win_height)
+        vim.cmd("terminal")     -- Start terminal in the new split
+      end
+    },
   },
 }
 

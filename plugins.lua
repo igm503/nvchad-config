@@ -48,6 +48,11 @@ local plugins = {
   {
     "tpope/vim-fugitive",
     lazy = false,
-  }
+  },
+  {
+    "folke/zen-mode.nvim",
+    opts = {},
+    lazy = false,
+  },
 }
 return plugins
