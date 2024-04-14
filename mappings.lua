@@ -25,11 +25,25 @@ M.copilot = {
   i = {
     ["<C-;>"] = {
       function()
-        vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
+        require("copilot.suggestion").accept()
       end,
       "Copilot Accept",
       { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true }
-    }
+    },
+    ["<C-'>"] = {
+      function()
+        require("copilot.suggestion").accept_word()
+      end,
+      "Copilot Accept",
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true }
+    },
+    ["<C-i>"] = {
+      function()
+        require("copilot.suggestion").accept_line()
+      end,
+      "Copilot Accept",
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true }
+    },
   },
 }
 
