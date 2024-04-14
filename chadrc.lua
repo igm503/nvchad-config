@@ -26,6 +26,7 @@ M.ui = {
         ["@function.call"] = { fg = "#DCDCAA" },
         ["@function.builtin"] = { fg = "#DCDCAA" },
         ["@function.method.call"] = { fg = "#DCDCAA" },
+        ["@attribute"] = { fg = "#DCDCAA" },
         ["@string"] = { fg = "#cc937a" },
         ["Comment"] = { fg = "#738e9e" },
         ["@punctuation.delimiter"] = { fg = "#dbdad9" },
