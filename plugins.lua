@@ -32,13 +32,6 @@ local plugins = {
     end,
   },
   {
-    "zbirenbaum/copilot.lua",
-    lazy = false,
-    config = function()
-      require "custom.configs.copilot"
-    end,
-  },
-  {
     "HiPhish/rainbow-delimiters.nvim",
     lazy = false,
     config = function()
@@ -86,6 +79,15 @@ local plugins = {
     config = function()
       require "custom.configs.eyeliner"
     end,
+  },
+  {
+    'Exafunction/codeium.vim',
+    lazy = false,
+      config = function ()
+	    vim.keymap.set('i', '<C-;>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+	    vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+	  end,
+    event = 'BufEnter'
   },
 }
 return plugins

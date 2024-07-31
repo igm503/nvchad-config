@@ -21,27 +21,13 @@ local M = {}
 --   }
 -- }
 
-M.copilot = {
-  i = {
-    ["<C-;>"] = {
+M.codeium = {
+  n = {
+    ["<leader>cx"] = {
       function()
-        require("copilot.suggestion").accept()
+        vim.g.codeium_enabled = not vim.g.codeium_enabled
       end,
-      "Copilot Accept",
-      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true }
-    },
-    ["<C-'>"] = {
-      function()
-        require("copilot.suggestion").accept_word()
-      end,
-      "Copilot Accept",
-      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true }
-    },
-    ["<C-i>"] = {
-      function()
-        require("copilot.suggestion").accept_line()
-      end,
-      "Copilot Accept",
+      "Toggle codeium",
       { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true }
     },
   },
