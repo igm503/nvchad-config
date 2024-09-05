@@ -5,7 +5,7 @@ local opts = {
   sources = {
     null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.formatting.black.with({
-      extra_args = {"--line-length", "100"},
+      extra_args = { "--line-length", "100" },
     }),
   },
   -- on_attach = function(client, bufnr)
