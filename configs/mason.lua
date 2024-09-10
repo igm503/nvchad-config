@@ -4,6 +4,8 @@ local opts = {
     "ruff",
     "pyright",
     "lua-language-server",
+    "omnisharp",
+    "clangd",
   },
 }
 return opts

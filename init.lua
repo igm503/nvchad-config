@@ -24,3 +24,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
   pattern = "*",
   command = "Nvdash"
 })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.xaml",
+  command = "set filetype=xml"
+})

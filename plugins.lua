@@ -13,6 +13,13 @@ local plugins = {
     end,
   },
   {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require "custom.configs.mason-lspconfig"
+    end,
+    lazy = false,
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"

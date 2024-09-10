@@ -5,24 +5,25 @@ require("noice").setup {
       ["vim.lsp.util.stylize_markdown"] = true,
       ["cmp.entry.get_documentation"] = true,
     },
-    hover = { enabled = true },
+    hover = { enabled = true, silent = true },
     signature = { enabled = true },
   },
 }
-local configs = require("plugins.configs.lspconfig")
-local on_attach = configs.on_attach
-local capabilities = configs.capabilities
-
-local lspconfig = require("lspconfig")
-local servers = { "ruff", "pyright", "html", "cssls", "clangd" }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-lspconfig.html.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"html", "htm", "htmldjango"},
-}
-end
+-- local lspconfigs = require("plugins.configs.lspconfig")
+-- local on_attach = lspconfigs.on_attach
+-- local capabilities = lspconfigs.capabilities
+--
+-- local lspconfig = require("lspconfig")
+--
+-- local servers = { "ruff", "pyright", "cssls", "clangd", "omnisharp" }
+-- for _, lsp in ipairs(servers) do
+--   lspconfig[lsp].setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--   }
+-- end
+-- lspconfig.html.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { "html", "htm", "htmldjango" },
+-- }
