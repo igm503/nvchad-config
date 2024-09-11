@@ -66,7 +66,12 @@ local options = {
       "pyright",
       "lua-language-server",
       "omnisharp",
+      "csharpier",
+      "lemminx",
+      "xmlformatter",
       "clangd",
+      "sylua",
+      "prettier",
     },
   },
 }

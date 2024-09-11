@@ -56,7 +56,6 @@ local plugins = {
   },
   {
     "folke/trouble.nvim",
-    branch = "dev",
     keys = function()
       return require "configs.trouble"
     end,
