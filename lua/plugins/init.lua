@@ -1,48 +1,49 @@
 local plugins = {
+  -- {
+  --   "stevearc/conform.nvim",
+  --   opts = require "configs.conform",
+  -- },
   {
     "jose-elias-alvarez/null-ls.nvim",
     ft = { "python" },
     opts = function()
-      return require "custom.configs.null-ls"
+      return require "configs.null-ls"
     end,
   },
   {
     "williamboman/mason.nvim",
-    opts = function()
-      return require "custom.configs.mason"
-    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require "custom.configs.mason-lspconfig"
+      require "configs.mason-lspconfig"
     end,
     lazy = false,
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require "nvchad.configs.lspconfig"
+      require "configs.lspconfig"
     end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function()
-      return require "custom.configs.nvim-treesitter"
+      return require "configs.nvim-treesitter"
     end,
   },
   {
     "nvim-tree/nvim-tree.lua",
     opts = function()
-      return require "custom.configs.nvim-tree"
+      return require "configs.nvim-tree"
     end,
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
     lazy = false,
     config = function()
-      require "custom.configs.rainbow-delimiters"
+      require "configs.rainbow-delimiters"
     end,
   },
   {
@@ -57,7 +58,7 @@ local plugins = {
     "folke/trouble.nvim",
     branch = "dev",
     keys = function()
-      return require "custom.configs.trouble"
+      return require "configs.trouble"
     end,
     opts = {},
   },
@@ -70,31 +71,35 @@ local plugins = {
       "rcarriga/nvim-notify",
     },
     config = function()
-      require "custom.configs.noice"
+      require "configs.noice"
     end,
   },
   {
     "yamatsum/nvim-cursorline",
     lazy = false,
     config = function()
-      require "custom.configs.nvim-cursorline"
+      require "configs.nvim-cursorline"
     end,
   },
   {
-    'jinh0/eyeliner.nvim',
+    "jinh0/eyeliner.nvim",
     lazy = false,
     config = function()
-      require "custom.configs.eyeliner"
+      require "configs.eyeliner"
     end,
   },
   {
-    'Exafunction/codeium.vim',
+    "Exafunction/codeium.vim",
     lazy = false,
     config = function()
-      vim.keymap.set('i', '<C-;>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-      vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-;>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-x>", function()
+        return vim.fn["codeium#Clear"]()
+      end, { expr = true, silent = true })
     end,
-    event = 'BufEnter'
+    event = "BufEnter",
   },
 }
 return plugins

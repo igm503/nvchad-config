@@ -1,22 +1,20 @@
 local opts = {
   ensure_installed = {
-    -- defaults 
     "vim",
     "lua",
     "python",
-
-    -- web dev 
     "html",
+    "htmldjango",
     "css",
     "javascript",
     "typescript",
     "tsx",
     "json",
-
-   -- low level
     "c",
+    "c_sharp",
     "cpp",
     "zig",
+    "objc",
   },
   highlight = {
     enable = true,

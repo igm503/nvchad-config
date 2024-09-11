@@ -1,30 +1,37 @@
-vim.api.nvim_exec([[
-  autocmd FileType * setlocal nowrap
-]], false)
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+vim.g.mapleader = " "
 
-vim.opt.termguicolors = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.equalalways = false
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-local diagnostics_visible = true
-
-function _G.toggle_diagnostics()
-  diagnostics_visible = not diagnostics_visible
-  if diagnostics_visible then
-    vim.diagnostic.show()
-  else
-    vim.diagnostic.hide()
-  end
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
 end
 
-vim.api.nvim_set_keymap('n', '<leader>lt', '<cmd>lua toggle_diagnostics()<CR>', { noremap = true, silent = true })
+vim.opt.rtp:prepend(lazypath)
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  pattern = "*",
-  command = "Nvdash"
-})
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.xaml",
-  command = "set filetype=xml"
-})
+local lazy_config = require "configs.lazy"
+
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
+
+  { import = "plugins" },
+}, lazy_config)
+
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
+
+require "options"
+require "nvchad.autocmds"
+
+vim.schedule(function()
+  require "mappings"
+end)
