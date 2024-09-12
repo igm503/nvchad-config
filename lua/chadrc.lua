@@ -39,17 +39,26 @@ local options = {
       ["@keyword.conditional.ternary"] = { fg = "#dbdad9" },
     },
     transparency = false,
-    theme_toggle = { "github_dark", "github_light" },
+  },
+  ui = {
+    telescope = { style = "borderless" }, -- borderless / bordered
+    statusline = { theme = "vscode_colored" },
+    tabufline = {
+      enabled = true,
+      lazyload = false,
+      order = {  "buffers" },
+      modules = nil,
+    },
   },
   term = {
     winopts = { number = false, relativenumber = false },
     sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
     float = {
       relative = "editor",
-      row = 0.3,
-      col = 0.25,
-      width = 0.5,
-      height = 0.4,
+      row = 0.2,
+      col = 0.14,
+      width = 0.7,
+      height = 0.6,
       border = "single",
     },
   },
