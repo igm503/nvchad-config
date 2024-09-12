@@ -5,7 +5,7 @@ local map = vim.keymap.set
 -- Codeium toggle
 map("n", "<leader>cx", function()
   vim.g.codeium_enabled = not vim.g.codeium_enabled
-end, { desc = "Toggle codeium", replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true })
+end, { desc = "Toggle codeium", replace_keycodes = true, nowait = true, silent = false, expr = true, noremap = true })
 
 -- -- NvTerm mappings
 map("n", "<leader>h", function()

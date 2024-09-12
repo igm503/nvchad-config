@@ -46,7 +46,7 @@ local options = {
     tabufline = {
       enabled = true,
       lazyload = false,
-      order = {  "buffers" },
+      order = { "buffers" },
       modules = nil,
     },
   },

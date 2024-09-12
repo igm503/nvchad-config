@@ -1,12 +1,45 @@
+local api = require "nvim-tree.api"
+
+local function edit_or_open()
+  local node = api.tree.get_node_under_cursor()
+  if node.nodes ~= nil then
+    api.node.open.edit()
+  else
+    api.node.open.edit()
+    api.tree.close()
+  end
+end
+
+local function vsplit_preview()
+  local node = api.tree.get_node_under_cursor()
+  if node.nodes ~= nil then
+    api.node.open.edit()
+  else
+    api.node.open.edit()
+  end
+  api.tree.focus()
+end
+
+local function on_attach(bufnr)
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  vim.keymap.set("n", "l", edit_or_open, opts "Edit Or Open")
+  vim.keymap.set("n", "L", vsplit_preview, opts "Vsplit Preview")
+  vim.keymap.set("n", "H", api.tree.collapse_all, opts "Collapse All")
+end
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.opt.termguicolors = true
 
-local HEIGHT_RATIO = 0.8 -- You can change this
-local WIDTH_RATIO = 0.5  -- You can change this too
+local HEIGHT_RATIO = 0.8
+local WIDTH_RATIO = 0.5
 
 local opts = {
+  on_attach = on_attach,
   disable_netrw = true,
   hijack_netrw = true,
   respect_buf_cwd = true,
@@ -23,8 +56,7 @@ local opts = {
         local window_w_int = math.floor(window_w)
         local window_h_int = math.floor(window_h)
         local center_x = (screen_w - window_w) / 2
-        local center_y = ((vim.opt.lines:get() - window_h) / 2)
-            - vim.opt.cmdheight:get()
+        local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
         return {
           border = "rounded",
           relative = "editor",
@@ -75,6 +107,21 @@ local opts = {
         },
       },
     },
-  }
+  },
 }
+local function close_nvim_tree_on_first_use()
+  local nvim_tree_view = require "nvim-tree.view"
+  if nvim_tree_view.is_visible() then
+    vim.api.nvim_command "NvimTreeClose"
+    vim.api.nvim_command "bdelete"
+  end
+end
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  nested = true,
+  callback = function()
+    close_nvim_tree_on_first_use()
+  end,
+  once = true,
+})
 return opts
