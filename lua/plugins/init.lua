@@ -60,6 +60,7 @@ local plugins = {
       return require "configs.trouble"
     end,
     opts = {},
+    lazy = false,
   },
   {
     "folke/noice.nvim",

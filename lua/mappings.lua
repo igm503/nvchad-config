@@ -35,3 +35,7 @@ for i = 0, 9 do
     require("nvchad.term").toggle { pos = "float", id = "float" .. i }
   end, { desc = "Toggle floating term " .. i })
 end
+
+map("n", "<leader>lf", function()
+  vim.diagnostic.open_float()
+end, { desc = "Show line diagnostics", noremap = true, silent = true })
