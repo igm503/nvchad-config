@@ -32,6 +32,7 @@ local options = {
       ["@attribute"] = { fg = "#DCDCAA" },
       ["@tag"] = { fg = "#DCDCAA" },
       ["@number"] = { fg = "#B5CEA8" },
+      ["@number.float"] = { fg = "#B5CEA8" },
       ["@string"] = { fg = "#cc937a" },
       ["Comment"] = { fg = "#738e9e" },
       ["@punctuation.delimiter"] = { fg = "#dbdad9" },
