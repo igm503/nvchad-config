@@ -80,7 +80,7 @@ local options = {
       "lemminx",
       "xmlformatter",
       "clangd",
-      "sylua",
+      "stylua",
       "prettier",
     },
   },
