@@ -1,8 +1,4 @@
 local plugins = {
-  -- {
-  --   "stevearc/conform.nvim",
-  --   opts = require "configs.conform",
-  -- },
   {
     "jose-elias-alvarez/null-ls.nvim",
     ft = { "python" },
@@ -24,8 +20,13 @@ local plugins = {
     "neovim/nvim-lspconfig",
     config = function()
       require "nvchad.configs.lspconfig"
-      require "configs.lspconfig"
+      vim.filetype.add {
+        extension = {
+          metal = "cpp",
+        },
+      }
     end,
+    lazy = false,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -100,6 +101,42 @@ local plugins = {
       end, { expr = true, silent = true })
     end,
     event = "BufEnter",
+  },
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    opts = require "configs.conform",
+    build = "make",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
   },
 }
 return plugins

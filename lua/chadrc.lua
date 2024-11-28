@@ -82,6 +82,8 @@ local options = {
       "clangd",
       "stylua",
       "prettier",
+      "ts_ls",
+      "htmx"
     },
   },
 }

@@ -8,6 +8,7 @@ local opts = {
       extra_args = { "--line-length", "100" },
     },
     null_ls.builtins.formatting.csharpier,
+    null_ls.builtins.formatting.prettierd,
   },
   -- on_attach = function(client, bufnr)
   --  if client.supports_method("textDocument/formatting") then
