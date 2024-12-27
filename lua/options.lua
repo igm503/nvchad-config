@@ -20,11 +20,21 @@ end
 
 vim.api.nvim_set_keymap("n", "<leader>lt", "<cmd>lua toggle_diagnostics()<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  pattern = "*",
-  command = "Nvdash",
-})
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.xaml",
   command = "set filetype=xml",
+})
+
+local function open_nvim_tree(data)
+  local directory = vim.fn.isdirectory(data.file) == 1
+  if not directory then
+    return
+  end
+  vim.cmd.cd(data.file)
+  require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  pattern = "*",
+  callback = open_nvim_tree,
 })

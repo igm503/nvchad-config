@@ -10,6 +10,11 @@ local opts = {
   disable_netrw = true,
   hijack_netrw = true,
   respect_buf_cwd = true,
+  hijack_unnamed_buffer_when_opening = false,
+	hijack_directories = {
+		enable = true,
+		auto_open = true,
+	},
   sync_root_with_cwd = true,
   view = {
     relativenumber = true,
@@ -76,19 +81,5 @@ local opts = {
     },
   },
 }
-local function close_nvim_tree_on_first_use()
-  local nvim_tree_view = require "nvim-tree.view"
-  if nvim_tree_view.is_visible() then
-    vim.api.nvim_command "NvimTreeClose"
-    vim.api.nvim_command "bdelete"
-  end
-end
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  nested = true,
-  callback = function()
-    close_nvim_tree_on_first_use()
-  end,
-  once = true,
-})
 return opts

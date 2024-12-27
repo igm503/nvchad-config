@@ -51,6 +51,9 @@ local options = {
       modules = nil,
     },
   },
+  nvdash = {
+    load_on_startup = false,
+  },
   term = {
     winopts = { number = false, relativenumber = false },
     sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
@@ -83,7 +86,7 @@ local options = {
       "stylua",
       "prettier",
       "ts_ls",
-      "htmx"
+      "htmx",
     },
   },
 }
