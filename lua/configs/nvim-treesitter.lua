@@ -15,6 +15,7 @@ local opts = {
     "cpp",
     "zig",
     "objc",
+    "markdown",
   },
   highlight = {
     enable = true,
