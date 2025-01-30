@@ -38,12 +38,35 @@ local options = {
       ["@punctuation.delimiter"] = { fg = "#dbdad9" },
       ["@punctuation.bracket"] = { fg = "#dbdad9" },
       ["@keyword.conditional.ternary"] = { fg = "#dbdad9" },
+      ["St_Supermaven"] = { fg = "#6CC644" },
     },
     transparency = false,
   },
   ui = {
-    telescope = { style = "borderless" }, -- borderless / bordered
-    statusline = { theme = "vscode_colored" },
+    telescope = { style = "borderless" },
+    statusline = {
+      theme = "vscode_colored",
+      separator_style = "default",
+      order = {
+        "mode",
+        "file",
+        "diagnostics",
+        "git",
+        "%=",
+        "lsp_msg",
+        "%=",
+        "lsp",
+        "supermaven",
+        "cursor",
+        "cwd",
+      },
+      modules = {
+        supermaven = function()
+          local api = require "supermaven-nvim.api"
+          return "%#St_file_bg#" .. (api.is_running() and " 󰚩 SM " or " 󰚨 SM ")
+        end,
+      },
+    },
     tabufline = {
       enabled = true,
       lazyload = false,
@@ -90,6 +113,5 @@ local options = {
     },
   },
 }
-
 local status, chadrc = pcall(require, "chadrc")
 return vim.tbl_deep_extend("force", options, status and chadrc or {})

@@ -90,18 +90,25 @@ local plugins = {
     end,
   },
   {
-    "Exafunction/codeium.vim",
+    "supermaven-inc/supermaven-nvim",
     lazy = false,
     config = function()
-      vim.keymap.set("i", "<C-;>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<C-x>", function()
-        return vim.fn["codeium#Clear"]()
-      end, { expr = true, silent = true })
+      require "configs.supermaven"
     end,
-    event = "BufEnter",
   },
+  -- {
+  --   "Exafunction/codeium.vim",
+  --   lazy = false,
+  --   config = function()
+  --     vim.keymap.set("i", "<C-;>", function()
+  --       return vim.fn["codeium#Accept"]()
+  --     end, { expr = true, silent = true })
+  --     vim.keymap.set("i", "<C-x>", function()
+  --       return vim.fn["codeium#Clear"]()
+  --     end, { expr = true, silent = true })
+  --   end,
+  --   event = "BufEnter",
+  -- },
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
