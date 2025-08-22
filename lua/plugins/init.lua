@@ -1,16 +1,16 @@
 local plugins = {
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     ft = { "python" },
     opts = function()
       return require "configs.null-ls"
     end,
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     config = function()
       require "configs.mason-lspconfig"
     end,

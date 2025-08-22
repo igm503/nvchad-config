@@ -94,24 +94,6 @@ local options = {
     theme = "grid",
     excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" },
   },
-  mason = {
-    cmd = true,
-    pkgs = {
-      "black",
-      "ruff",
-      "pyright",
-      "lua-language-server",
-      "omnisharp",
-      "csharpier",
-      "lemminx",
-      "xmlformatter",
-      "clangd",
-      "stylua",
-      "prettier",
-      "ts_ls",
-      "htmx",
-    },
-  },
 }
 local status, chadrc = pcall(require, "chadrc")
 return vim.tbl_deep_extend("force", options, status and chadrc or {})
