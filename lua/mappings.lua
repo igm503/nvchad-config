@@ -2,6 +2,8 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+vim.g.maplocalleader = ","
+
 -- Codeium toggle
 map("n", "<leader>cx", function()
   vim.g.codeium_enabled = not vim.g.codeium_enabled
@@ -39,3 +41,23 @@ end
 map("n", "<leader>lf", function()
   vim.diagnostic.open_float()
 end, { desc = "Show line diagnostics", noremap = true, silent = true })
+
+-- Molten keybindings (init and operator only)
+map("n", "<localleader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize molten" })
+map("n", "<localleader>e", ":MoltenEvaluateOperator<CR>", { silent = true, desc = "Molten operator selection" })
+map("n", "<localleader>rr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "Re-evaluate cell" })
+map("n", "<localleader>os", ":noautocmd MoltenEnterOutput<CR>", { silent = true, desc = "Enter output window" })
+map("n", "<localleader>oh", ":MoltenHideOutput<CR>", { silent = true, desc = "Hide output" })
+map("n", "<localleader>k", ":<C-u>MoltenPrev<cr>", { silent = true, desc = "Prev cell" })
+map("n", "<localleader>j", ":<C-u>MoltenNext<cr>", { silent = true, desc = "Next cell" })
+map("n", "<localleader>cx", "<cmd>MoltenDeleteCell<cr>", { silent = true, desc = "Delete cell" })
+map("n", "<localleader>rx", "<cmd>MoltenInterrupt<cr>", { silent = true, desc = "Interrupt kernel" })
+map("n", "<localleader>rr", "<cmd>MoltenRestart<cr>", { silent = true, desc = "Restart kernel" })
+
+-- Quarto runner keybindings (these call molten under the hood)
+local runner = require "quarto.runner"
+map("n", "<localleader>rc", runner.run_cell, { desc = "Run cell", silent = true })
+map("n", "<localleader>ra", runner.run_above, { desc = "Run cell and above", silent = true })
+map("n", "<localleader>rA", runner.run_all, { desc = "Run all cells", silent = true })
+map("n", "<localleader>rl", runner.run_line, { desc = "Run line", silent = true })
+map("v", "<localleader>r", runner.run_range, { desc = "Run selection", silent = true })

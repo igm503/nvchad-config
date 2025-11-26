@@ -38,3 +38,15 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
   pattern = "*",
   callback = open_nvim_tree,
 })
+
+vim.env.PATH = vim.fn.expand "~/.virtualenvs/neovim/bin" .. ":" .. vim.env.PATH
+vim.g.loaded_python3_provider = nil
+vim.g.python3_host_prog = vim.fn.expand "~/.virtualenvs/neovim/bin/python"
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.ipynb",
+  callback = function()
+    local buf_path = vim.fn.expand "%:p:h"
+    vim.cmd("lcd " .. buf_path)
+  end,
+})

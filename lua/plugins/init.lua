@@ -145,5 +145,90 @@ local plugins = {
       },
     },
   },
+  -- jupytext.nvim - converts .ipynb to editable format
+  {
+    "GCBallesteros/jupytext.nvim",
+    lazy = false, -- must not be lazy loaded
+    opts = {
+      custom_language_formatting = {
+        python = {
+          extension = "qmd",
+          style = "quarto",
+          force_ft = "quarto",
+        },
+      },
+    },
+  },
+
+  -- quarto-nvim - cell navigation and running
+  {
+    "quarto-dev/quarto-nvim",
+    dependencies = {
+      "jmbuhr/otter.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {
+      lspFeatures = {
+        enabled = true,
+        languages = { "python" },
+        diagnostics = {
+          enabled = true,
+          triggers = { "BufWritePost" },
+        },
+        completion = { enabled = true },
+      },
+      codeRunner = {
+        enabled = true,
+        default_method = "molten",
+      },
+    },
+  },
+
+  -- molten-nvim - the actual code runner
+  {
+    "benlubas/molten-nvim",
+    version = "^1.0.0",
+    lazy = false,
+    build = ":UpdateRemotePlugins",
+    init = function()
+      vim.g.molten_image_provider = "image.nvim"
+
+      -- Use floating window, not virtual lines
+      vim.g.molten_output_virt_lines = false
+      vim.g.molten_virt_text_output = false
+
+      -- Auto-open float when entering cell
+      vim.g.molten_auto_open_output = true
+
+      -- Make float scrollable and larger
+      vim.g.molten_output_win_max_height = 100
+
+      -- Images in float only
+      vim.g.molten_image_location = "float"
+      vim.g.molten_auto_image_popup = false
+
+      -- Show cell boundaries
+      vim.g.molten_use_border_highlights = true
+
+      -- Enter output window to scroll it
+      vim.g.molten_enter_output_behavior = "open_and_enter"
+    end,
+  },
+
+  -- image.nvim - inline image rendering
+  {
+    "3rd/image.nvim",
+    opts = {
+      backend = "kitty",
+      processor = "magick_cli",
+      integrations = {}, -- disable integrations, let molten handle it
+      max_width = 400,
+      max_height = 100,
+      max_height_window_percentage = math.huge, -- prevents percentage-based resizing issues
+      max_width_window_percentage = math.huge,
+      window_overlap_clear_enabled = true,
+      window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+    },
+  },
 }
 return plugins
