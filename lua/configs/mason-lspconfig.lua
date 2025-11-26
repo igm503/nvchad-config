@@ -4,16 +4,11 @@ local capabilities = configs.capabilities
 
 require("mason-lspconfig").setup {
   ensure_installed = {
-    "black",
-    "ruff",
     "pyright",
     "lua-language-server",
     "omnisharp",
     "lemminx",
-    "xmlformatter",
     "clangd",
-    "stylua",
-    "prettier",
     "ts_ls",
     "htmx-lsp",
   },
