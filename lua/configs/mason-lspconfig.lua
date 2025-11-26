@@ -5,12 +5,12 @@ local capabilities = configs.capabilities
 require("mason-lspconfig").setup {
   ensure_installed = {
     "black",
-    "ruff", 
+    "ruff",
     "pyright",
     "lua-language-server",
     "omnisharp",
     "lemminx",
-    "xmlformatter", 
+    "xmlformatter",
     "clangd",
     "stylua",
     "prettier",
@@ -21,14 +21,29 @@ require("mason-lspconfig").setup {
 }
 
 -- Set global defaults for ALL language servers
-vim.lsp.config('*', {
+vim.lsp.config("*", {
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
 -- Specific override for HTML
-vim.lsp.config('html', {
+vim.lsp.config("html", {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "html", "htm", "htmldjango" },
+})
+
+vim.lsp.config("lua_ls", {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+    },
+  },
 })
