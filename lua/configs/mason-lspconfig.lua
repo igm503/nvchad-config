@@ -5,12 +5,10 @@ local capabilities = configs.capabilities
 require("mason-lspconfig").setup {
   ensure_installed = {
     "pyright",
-    "lua-language-server",
     "omnisharp",
     "lemminx",
     "clangd",
     "ts_ls",
-    "htmx-lsp",
   },
   automatic_enable = true,
 }
