@@ -50,3 +50,18 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.cmd("lcd " .. buf_path)
   end,
 })
+
+-- Only use OSC 52 over SSH
+if os.getenv("SSH_CONNECTION") or os.getenv("SSH_TTY") then
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+      ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+  }
+end

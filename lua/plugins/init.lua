@@ -66,6 +66,7 @@ local plugins = {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+    enabled = not (os.getenv "SSH_CONNECTION" or os.getenv "SSH_TTY"),
     opts = {},
     dependencies = {
       "MunifTanjim/nui.nvim",

@@ -2,7 +2,6 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-vim.g.maplocalleader = ","
 
 -- Codeium toggle
 map("n", "<leader>cx", function()
