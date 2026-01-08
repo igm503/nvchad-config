@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
   callback = open_nvim_tree,
 })
 
-vim.env.PATH = vim.fn.expand "~/.virtualenvs/neovim/bin" .. ":" .. vim.env.PATH
+-- vim.env.PATH = vim.fn.expand "~/.virtualenvs/neovim/bin" .. ":" .. vim.env.PATH
 vim.g.loaded_python3_provider = nil
 vim.g.python3_host_prog = vim.fn.expand "~/.virtualenvs/neovim/bin/python"
 

@@ -33,6 +33,8 @@ local plugins = {
     opts = function()
       return require "configs.nvim-treesitter"
     end,
+    build = ":TSUpdate",
+    lazy = false,
   },
   {
     "nvim-tree/nvim-tree.lua",

@@ -16,6 +16,11 @@ local opts = {
     "zig",
     "objc",
     "markdown",
+    'markdown_inline',
+    "toml",
+    "bash",
+    "regex",
+    "commonlisp",
   },
   highlight = {
     enable = true,
