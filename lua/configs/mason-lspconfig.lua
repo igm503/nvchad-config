@@ -13,13 +13,32 @@ require("mason-lspconfig").setup {
   automatic_enable = true,
 }
 
--- Set global defaults for ALL language servers
-vim.lsp.config("*", {
+-- Configure each server explicitly
+vim.lsp.config("pyright", {
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
--- Specific override for HTML
+vim.lsp.config("omnisharp", {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+vim.lsp.config("lemminx", {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+vim.lsp.config("clangd", {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+vim.lsp.config("ts_ls", {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
 vim.lsp.config("html", {
   on_attach = on_attach,
   capabilities = capabilities,
